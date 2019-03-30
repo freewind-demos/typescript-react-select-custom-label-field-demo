@@ -17,7 +17,9 @@ export default function Hello() {
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
   return <div>
     <h1>Hello React Select</h1>
-    <Select options={options} getOptionLabel={user => user.name} value={selectedUser}
+    <Select options={options} value={selectedUser}
+            getOptionLabel={user => user.name}
+            getOptionValue={user => user}
             onChange={user => setSelectedUser(user as User)}
     />
     <div>{JSON.stringify(selectedUser)}</div>
