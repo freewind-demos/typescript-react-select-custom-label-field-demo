@@ -1,24 +1,25 @@
 //import * as React from 'react'
 import React, {useState} from 'react'
 import Select from 'react-select';
-import {ValueType, OptionsType} from "react-select/lib/types";
 
-type OptionType = {
-  value: string,
-  label: string
+type User = {
+  id: string,
+  name: string
 }
 
-const options: OptionsType<OptionType> = [
-  {value: 'chocolate', label: 'Chocolate'},
-  {value: 'strawberry', label: 'Strawberry'},
-  {value: 'vanilla', label: 'Vanilla'}
+const options: User[] = [
+  {id: 'chocolate', name: 'Chocolate'},
+  {id: 'strawberry', name: 'Strawberry'},
+  {id: 'vanilla', name: 'Vanilla'}
 ];
 
 export default function Hello() {
-  const [selectedOption, setSelectedOption] = useState<ValueType<OptionType>>(null)
+  const [selectedUser, setSelectedUser] = useState<User | null>(null)
   return <div>
     <h1>Hello React Select</h1>
-    <Select value={selectedOption} onChange={setSelectedOption} options={options}/>
-    <div>{JSON.stringify(selectedOption)}</div>
+    <Select options={options} formatOptionLabel={(user) => user.name}
+            value={selectedUser} onChange={user => setSelectedUser(user as User)}
+    />
+    <div>{JSON.stringify(selectedUser)}</div>
   </div>
 };
