@@ -1,4 +1,3 @@
-//import * as React from 'react'
 import React, {useState} from 'react'
 import Select from 'react-select';
 
@@ -19,7 +18,7 @@ export default function Hello() {
     <h1>Hello React Select</h1>
     <Select options={options} value={selectedUser}
             getOptionLabel={user => user.name}
-            getOptionValue={user => user}
+            getOptionValue={user => user.id}
             onChange={user => setSelectedUser(user as User)}
     />
     <div>{JSON.stringify(selectedUser)}</div>
